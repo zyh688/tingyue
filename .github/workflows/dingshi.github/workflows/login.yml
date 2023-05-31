@@ -1,0 +1,26 @@
+name: Login to Website
+
+on:
+  schedule:
+    - cron: '0 6 * *'
+
+jobs:
+  login:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Login to Website
+        run: |
+          # Set the username and password variables
+          USERNAME="your_zyh"
+          PASSWORD="your_z5439888"
+
+          # Send a POST request to the login page with the username and password
+          curl -d "username=$USERNAME&password=$PASSWORD"  https://silly-heady-earwig.glitch.me/list
+
+          # Wait for the page to load
+          sleep 5
+
+          # Click the "submit" button to log in
+          curl -d "submit=1" http://your_website.com/login.php
